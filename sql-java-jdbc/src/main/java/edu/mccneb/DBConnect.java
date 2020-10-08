@@ -12,7 +12,7 @@ public class DBConnect {
             Connection conn = null;
             try {
                 // db parameters
-                String url = "jdbc:sqlite:C:/mcc/sql-jdbc/chinook.db";
+                String url = "jdbc:sqlite:C:/Users/student/Desktop/jackiebeaugard.github.io/sql-jdbc/chinook.db";
                 // create a connection to the database
                 conn = DriverManager.getConnection(url);
 

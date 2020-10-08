@@ -2,8 +2,7 @@ package edu.mccneb;
 
 import java.sql.*;
 
-public class SelectWithParameters {
-
+public class GenerateSQLReport {
     /**
      * Connect to the test.db database
      * @return the Connection object
@@ -19,28 +18,21 @@ public class SelectWithParameters {
         }
         return conn;
     }
-    /**
-     * Get the tracks with unit price greater than specified amount.
-     * @param unitprice of the track
-     */
-    public void getUnitPriceGreaterThan(double unitprice) {
-        String sql = "SELECT trackid, name, unitprice, composer "
-                + "FROM tracks WHERE UnitPrice > ?";
 
+    public void selectTrackAlbumsArtists(){
+        String sql = "SELECT tracks.TrackId AS TrackId, tracks.Name AS TracksName, albums.Title AS AlbumsTitle, artists.Name AS ArtistsName FROM tracks " +
+                "INNER JOIN albums ON albums.AlbumId = tracks.AlbumId " +
+                "INNER JOIN artists ON artists.ArtistId = albums.ArtistId";
         try (Connection conn = this.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            // set the value
-            pstmt.setDouble(1, unitprice);
-            //
-            ResultSet rs = pstmt.executeQuery();
-
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
             // loop through the result set
             while (rs.next()) {
-                System.out.println(rs.getInt("trackid") + "\t" +
-                        rs.getString("name") + "\t" +
-                        rs.getDouble("unitprice")+ "\t" +
-                        rs.getString("composer"));
+                System.out.println(rs.getInt("TrackId") +  "\t" +
+                        rs.getString("TracksName") +  "\t" +
+                        rs.getString("AlbumsTitle") +  "\t" +
+                        rs.getString("ArtistsName")
+                );
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -49,8 +41,9 @@ public class SelectWithParameters {
     /**
      * @param args the command line arguments
      */
+
     public static void main(String[] args) {
-        SelectWithParameters app = new SelectWithParameters();
-        app.getUnitPriceGreaterThan(1.50);
+        GenerateSQLReport app = new GenerateSQLReport();
+        app.selectTrackAlbumsArtists();
     }
 }

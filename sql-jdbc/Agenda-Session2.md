@@ -14,7 +14,7 @@ Please review the first three sections of the lab - Lab overview, Lab prequisite
 
 ### Final check for any impediments 6:15 PM - 6: 20 (5 minutes)
 
-### Start with Lab 1 
+### Start with Lab 2 
 
 ### Suggested Break 1,      7:00 PM - 7:10 PM (10 minutes)
 

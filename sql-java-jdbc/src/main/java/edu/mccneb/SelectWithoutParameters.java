@@ -18,7 +18,7 @@ import java.sql.Statement;
          */
         private Connection connect() {
             // SQLite connection string
-            String url = "jdbc:sqlite:C:/mcc/sql-jdbc/chinook.db";
+            String url = "jdbc:sqlite:C:/Users/student/Desktop/jackiebeaugard.github.io/sql-jdbc/chinook.db";
             Connection conn = null;
             try {
                 conn = DriverManager.getConnection(url);
