@@ -96,7 +96,7 @@ header img {
 
 /* the styles for the section */
 section {
-	grid-area: 1 / 2 /  / 3;
+	grid-area: 1 / 2 / 2 / 3;
 }
 section h1 {
 	font-size: 150%;
